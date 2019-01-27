@@ -48,6 +48,14 @@ element = wait.until(condi.presence_of_all_elements_located)
 
 driver.get("https://twitter.com/login")
 
+#It's optional to load twitter cookies
+try:
+    cookies = pickle.load(open("twCookies.pkl", "rb"))
+    for cookie in cookies:
+        driver.add_cookie(cookie)
+except(OSError, IOError, FileNotFoundError) as exception:
+   #handling errors
+
 driver.get('https://twitter.com/Bitcoin/status/1001306047926095873')
 
 c = 0
